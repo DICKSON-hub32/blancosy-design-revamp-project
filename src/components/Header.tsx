@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Menu, X, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import PrivacyPolicyOverlay from './PrivacyPolicyOverlay';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -50,23 +48,17 @@ const Header: React.FC = () => {
               >
                 Services
               </button>
-              <button 
-                onClick={() => scrollToSection('impact')}
+              <a 
+                href="/gallery"
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
-                Impact
-              </button>
+                Gallery
+              </a>
               <button 
                 onClick={() => scrollToSection('contact')}
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Contact
-              </button>
-              <button 
-                onClick={() => setIsPrivacyOpen(true)}
-                className="text-muted-foreground hover:text-primary transition-colors text-sm"
-              >
-                Privacy Policy
               </button>
             </nav>
 
@@ -111,23 +103,17 @@ const Header: React.FC = () => {
                 >
                   Services
                 </button>
-                <button 
-                  onClick={() => scrollToSection('impact')}
+                <a 
+                  href="/gallery"
                   className="text-left py-2 text-foreground hover:text-primary transition-colors"
                 >
-                  Impact
-                </button>
+                  Gallery
+                </a>
                 <button 
                   onClick={() => scrollToSection('contact')}
                   className="text-left py-2 text-foreground hover:text-primary transition-colors"
                 >
                   Contact
-                </button>
-                <button 
-                  onClick={() => setIsPrivacyOpen(true)}
-                  className="text-left py-2 text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Privacy Policy
                 </button>
                 <Button 
                   onClick={() => scrollToSection('contact')}
@@ -140,12 +126,6 @@ const Header: React.FC = () => {
           )}
         </div>
       </header>
-
-      {/* Privacy Policy Overlay */}
-      <PrivacyPolicyOverlay 
-        isOpen={isPrivacyOpen} 
-        onClose={() => setIsPrivacyOpen(false)} 
-      />
     </>
   );
 };
