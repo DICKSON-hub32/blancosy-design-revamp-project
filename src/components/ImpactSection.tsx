@@ -46,7 +46,7 @@ const ImpactSection: React.FC = () => {
             Our <span className="gradient-text">Impact</span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Measuring our success through the positive changes we bring to communities and the environment.
+            Transforming lives through sustainable waste management since our inception.
           </p>
         </div>
 
