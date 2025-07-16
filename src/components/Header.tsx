@@ -36,12 +36,12 @@ const Header: React.FC = () => {
               >
                 Home
               </button>
-              <button 
-                onClick={() => scrollToSection('about')}
+              <a 
+                href="/about"
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 About
-              </button>
+              </a>
               <button 
                 onClick={() => scrollToSection('services')}
                 className="text-foreground hover:text-primary transition-colors font-medium"
@@ -53,6 +53,12 @@ const Header: React.FC = () => {
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Gallery
+              </a>
+              <a 
+                href="/blog"
+                className="text-foreground hover:text-primary transition-colors font-medium"
+              >
+                Blog
               </a>
               <button 
                 onClick={() => scrollToSection('contact')}
@@ -91,12 +97,12 @@ const Header: React.FC = () => {
                 >
                   Home
                 </button>
-                <button 
-                  onClick={() => scrollToSection('about')}
+                <a 
+                  href="/about"
                   className="text-left py-2 text-foreground hover:text-primary transition-colors"
                 >
                   About
-                </button>
+                </a>
                 <button 
                   onClick={() => scrollToSection('services')}
                   className="text-left py-2 text-foreground hover:text-primary transition-colors"
@@ -108,6 +114,12 @@ const Header: React.FC = () => {
                   className="text-left py-2 text-foreground hover:text-primary transition-colors"
                 >
                   Gallery
+                </a>
+                <a 
+                  href="/blog"
+                  className="text-left py-2 text-foreground hover:text-primary transition-colors"
+                >
+                  Blog
                 </a>
                 <button 
                   onClick={() => scrollToSection('contact')}
