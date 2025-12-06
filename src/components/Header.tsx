@@ -1,18 +1,24 @@
 import React, { useState } from "react";
-import { Menu, X, Leaf } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname === "/") {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      window.location.href = `/#${sectionId}`;
     }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -22,47 +28,47 @@ const Header: React.FC = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="">
+              <Link to="/">
                 <img
                   src="./logo.jpg"
-                  alt="Logo"
+                  alt="Blancosy Logo"
                   className="h-8 w-12 rounded-full"
                 />
-              </div>
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
-              <button
-                onClick={() => scrollToSection("home")}
+              <Link
+                to="/"
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Home
-              </button>
-              <a
-                href="/about"
+              </Link>
+              <Link
+                to="/about"
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 About
-              </a>
+              </Link>
               <button
                 onClick={() => scrollToSection("services")}
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Services
               </button>
-              <a
-                href="/gallery"
+              <Link
+                to="/gallery"
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Gallery
-              </a>
-              <a
-                href="/blog"
+              </Link>
+              <Link
+                to="/blog"
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Blog
-              </a>
+              </Link>
               <button
                 onClick={() => scrollToSection("contact")}
                 className="text-foreground hover:text-primary transition-colors font-medium"
@@ -73,11 +79,10 @@ const Header: React.FC = () => {
 
             {/* CTA Button */}
             <div className="hidden md:block">
-              <Button
-                onClick={() => scrollToSection("contact")}
-                className="eco-button"
-              >
-                Get Involved
+              <Button asChild>
+                <Link to="/contact" className="eco-button">
+                  Get Involved
+                </Link>
               </Button>
             </div>
 
@@ -98,47 +103,50 @@ const Header: React.FC = () => {
           {isMenuOpen && (
             <nav className="md:hidden mt-4 pb-4 border-t border-border/50 pt-4">
               <div className="flex flex-col gap-3">
-                <button
-                  onClick={() => scrollToSection("home")}
+                <Link
+                  to="/"
                   className="text-left py-2 text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   Home
-                </button>
-                <a
-                  href="/about"
+                </Link>
+                <Link
+                  to="/about"
                   className="text-left py-2 text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   About
-                </a>
+                </Link>
                 <button
                   onClick={() => scrollToSection("services")}
                   className="text-left py-2 text-foreground hover:text-primary transition-colors"
                 >
                   Services
                 </button>
-                <a
-                  href="/gallery"
+                <Link
+                  to="/gallery"
                   className="text-left py-2 text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   Gallery
-                </a>
-                <a
-                  href="/blog"
+                </Link>
+                {/* <Link
+                  to="/blog"
                   className="text-left py-2 text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   Blog
-                </a>
+                </Link> */}
                 <button
                   onClick={() => scrollToSection("contact")}
                   className="text-left py-2 text-foreground hover:text-primary transition-colors"
                 >
                   Contact
                 </button>
-                <Button
-                  onClick={() => scrollToSection("contact")}
-                  className="eco-button mt-3 self-start"
-                >
-                  Get Involved
+                <Button asChild className="eco-button mt-3 self-start">
+                  <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                    Get Involved
+                  </Link>
                 </Button>
               </div>
             </nav>

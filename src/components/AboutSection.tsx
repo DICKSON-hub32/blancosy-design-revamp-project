@@ -1,24 +1,27 @@
-import React from 'react';
-import { Target, Heart, Zap, Award } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import communityImage from '@/assets/community-impact.jpg';
+import React from "react";
+import { Target, Heart, Zap, Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import communityImage from "@/assets/community-impact.jpg";
 
 const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-background to-eco-green-light">
+    <section
+      id="about"
+      className="py-20 bg-gradient-to-br from-background to-eco-green-light"
+    >
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Image */}
           <div className="relative">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img 
+              <img
                 src={communityImage}
                 alt="Community impact in Kenya"
                 className="w-full h-[500px] object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
             </div>
-            
+
             {/* Floating Impact Card */}
             <div className="absolute -bottom-8 -right-8 eco-card bg-white p-6 max-w-xs">
               <div className="flex items-center gap-3 mb-2">
@@ -28,7 +31,8 @@ const AboutSection: React.FC = () => {
                 <span className="font-semibold text-primary">Impact</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                Transforming lives through sustainable waste management since our inception.
+                Transforming lives through sustainable waste management since
+                our inception.
               </p>
             </div>
           </div>
@@ -40,21 +44,29 @@ const AboutSection: React.FC = () => {
                 About <span className="gradient-text">Blancosy</span>
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Blancosy Ltd is a pioneering waste recycling and product manufacturing company dedicated to creating sustainable solutions for Kenya's waste management challenges.
+                Blancosy Ltd is a pioneering waste recycling and product
+                manufacturing company dedicated to creating sustainable
+                solutions for Kenya's waste management challenges.
               </p>
             </div>
 
             <div className="space-y-4 text-muted-foreground">
               <p>
-                We produce eco-friendly products such as <strong>Ecomakaa</strong>, a charcoal alternative made from recycled waste paper, and <strong>ECO-JIKO</strong>, an energy-efficient stove designed to work effectively with Ecomakaa.
+                We produce eco-friendly products such as{" "}
+                <strong>Ecomakaa</strong>, a charcoal alternative made from
+                recycled waste paper, and <strong>ECO-JIKO</strong>, an
+                energy-efficient stove designed to work effectively with
+                Ecomakaa.
               </p>
               <p>
-                These products serve households, hotels, and community organizations that seek cleaner, more sustainable energy sources and waste management solutions.
+                These products serve households, hotels, and community
+                organizations that seek cleaner, more sustainable energy sources
+                and waste management solutions.
               </p>
             </div>
 
             {/* Key Values */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-eco-green/10 rounded-lg">
                   <Target className="h-5 w-5 text-eco-green" />
@@ -94,14 +106,14 @@ const AboutSection: React.FC = () => {
                   <p className="text-sm text-muted-foreground">Reducing pollution while conserving valuable resources</p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* CTA */}
             <div className="pt-4">
-              <Button 
+              <Button
                 onClick={() => {
-                  const element = document.getElementById('services');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                  const element = document.getElementById("services");
+                  if (element) element.scrollIntoView({ behavior: "smooth" });
                 }}
                 className="eco-button"
               >

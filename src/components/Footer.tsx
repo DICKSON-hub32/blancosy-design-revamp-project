@@ -9,17 +9,11 @@ import {
   Instagram,
   Linkedin
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import PrivacyPolicyOverlay from "./PrivacyPolicyOverlay";
 
 const Footer: React.FC = () => {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <>
@@ -29,15 +23,13 @@ const Footer: React.FC = () => {
             {/* Brand Column */}
             <div className="lg:col-span-1 space-y-6">
               <div className="flex items-center gap-2">
-                <div className="p-2 bg-primary/10 rounded-lg">
-                  <div className="">
-                    <img
-                      src="./logo.jpg"
-                      alt="Logo"
-                      className="h-8 w-12 rounded-full"
-                    />
-                  </div>
-                </div>
+                <Link to="/">
+                  <img
+                    src="./logo.jpg"
+                    alt="Blancosy Logo"
+                    className="h-8 w-12 rounded-full"
+                  />
+                </Link>
               </div>
               <p className="text-muted-foreground">
                 Turning waste into wealth, empowering communities across Kenya
@@ -47,29 +39,35 @@ const Footer: React.FC = () => {
               {/* Social Links */}
               <div className="flex gap-3">
                 <a
-                  href="#"
+                  href="https://www.facebook.com/share/19g8Cx8bU2/"
                   className="p-2 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors"
                 >
                   <Facebook className="h-4 w-4 text-primary" />
                 </a>
                 <a
-                  href="#"
+                  href="https://x.com/Blancos436126"
                   className="p-2 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors"
                 >
                   <Twitter className="h-4 w-4 text-primary" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/blancosy_ltd?igsh=b3dtc3BkdWo4c242"
                   className="p-2 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors"
                 >
                   <Instagram className="h-4 w-4 text-primary" />
                 </a>
                 <a
-                  href="#"
+                  href="https://linkedin.com/company/blancosy-ltd"
                   className="p-2 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors"
                 >
                   <Linkedin className="h-4 w-4 text-primary" />
                 </a>
+                {/* <a
+                  href="https://linkedin.com"
+                  className="p-2 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors"
+                >
+                  <Tiktok className="h-4 w-4 text-primary" />
+                </a> */}
               </div>
             </div>
 
@@ -77,36 +75,42 @@ const Footer: React.FC = () => {
             <div className="space-y-6">
               <h3 className="text-lg font-semibold">Quick Links</h3>
               <nav className="space-y-3">
-                <button
-                  onClick={() => scrollToSection("home")}
+                <Link
+                  to="/"
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
                   Home
-                </button>
-                <button
-                  onClick={() => scrollToSection("about")}
+                </Link>
+                <Link
+                  to="/about"
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
                   About Us
-                </button>
-                <button
-                  onClick={() => scrollToSection("services")}
+                </Link>
+                <Link
+                  to="/services"
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
                   Services
-                </button>
-                <button
-                  onClick={() => scrollToSection("impact")}
+                </Link>
+                <Link
+                  to="/gallery"
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Our Impact
-                </button>
-                <button
-                  onClick={() => scrollToSection("contact")}
+                  Gallery
+                </Link>
+                <Link
+                  to="/blog"
+                  className="block text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Blog
+                </Link>
+                <Link
+                  to="/contact"
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
                   Contact
-                </button>
+                </Link>
               </nav>
             </div>
 
@@ -115,12 +119,14 @@ const Footer: React.FC = () => {
               <h3 className="text-lg font-semibold">Our Services</h3>
               <nav className="space-y-3">
                 <div className="text-muted-foreground">Waste Recycling</div>
+                <div className="text-muted-foreground">Smart Recycling App</div>
                 <div className="text-muted-foreground">
-                  Paper Waste Processing
+                  Reverse Vending Machine
                 </div>
-                <div className="text-muted-foreground">River Cleanup</div>
-                <div className="text-muted-foreground">Ecomakaa Production</div>
-                <div className="text-muted-foreground">ECO-JIKO Stoves</div>
+                <div className="text-muted-foreground">
+                  Eco-Makaa Production
+                </div>
+                <div className="text-muted-foreground">Eco-Jiko Stoves</div>
               </nav>
             </div>
 
@@ -131,18 +137,18 @@ const Footer: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <Mail className="h-4 w-4 text-primary" />
                   <span className="text-muted-foreground">
-                    info@blancosy.co.ke
+                    blancos5stars@gmail.com
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-4 w-4 text-primary" />
-                  <span className="text-muted-foreground">
-                    +254 XXX XXX XXX
-                  </span>
+                  <span className="text-muted-foreground">+254758277793</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="h-4 w-4 text-primary" />
-                  <span className="text-muted-foreground">Nairobi, Kenya</span>
+                  <span className="text-muted-foreground">
+                    Ruaraka, Nairobi, Kenya
+                  </span>
                 </div>
               </div>
 

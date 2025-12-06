@@ -1,12 +1,16 @@
-import React from 'react';
-import Header from '@/components/Header';
-import HeroSection from '@/components/HeroSection';
-import ServicesSection from '@/components/ServicesSection';
-import ImpactSection from '@/components/ImpactSection';
-import TestimonialSection from '@/components/TestimonialSection';
-import PartnersSection from '@/components/PartnersSection';
-import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
+import React from "react";
+import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/ServicesSection";
+import ProblemsSection from "@/components/ProblemsSection";
+import RVMSection from "@/components/RVMSection";
+import AppSection from "@/components/AppSection";
+import PortfolioSection from "@/components/PortfolioSection";
+import ImpactSection from "@/components/ImpactSection";
+import TestimonialSection from "@/components/TestimonialSection";
+import PartnersSection from "@/components/PartnersSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -15,9 +19,13 @@ const Index = () => {
       <main>
         <HeroSection />
         <ServicesSection />
+        <ProblemsSection />
+        <RVMSection />
+        <AppSection />
+        <PortfolioSection />
         <ImpactSection />
-        <TestimonialSection />
-        <PartnersSection />
+        {/* <TestimonialSection /> */}
+        {/* <PartnersSection /> */}
         <ContactSection />
       </main>
       <Footer />
