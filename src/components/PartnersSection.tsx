@@ -46,7 +46,7 @@ const PartnersSection = () => {
             loop: true,
           }}
           plugins={[
-            Autoplay({
+            (Autoplay as any)({
               delay: 2000,
             }),
           ]}
