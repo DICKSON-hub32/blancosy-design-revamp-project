@@ -199,9 +199,7 @@ const Blog = () => {
                         asChild
                       >
                         <Link to={`/blog/${post._id}`}>
-                          <span className="text-primary font-medium">
-                            Read More
-                          </span>
+                          <span className="text-primary font-medium">More</span>
                           <ArrowRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform" />
                         </Link>
                       </Button>
