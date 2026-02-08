@@ -1,6 +1,10 @@
-import React from 'react';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
+import React from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const PartnersSection = () => {
   const partners = [
@@ -34,27 +38,33 @@ const PartnersSection = () => {
     <section className="py-16 bg-background border-t border-border">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 gradient-text">Trusted by Industry Leaders</h2>
+          <h2 className="text-3xl font-bold mb-4 gradient-text">
+            Trusted by Industry Leaders
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            We're proud to partner with forward-thinking companies committed to sustainable waste management
+            We're proud to partner with forward-thinking companies committed to
+            sustainable waste management
           </p>
         </div>
 
         <Carousel
           opts={{
             align: "start",
-            loop: true,
+            loop: true
           }}
           plugins={[
             (Autoplay as any)({
-              delay: 2000,
-            }),
+              delay: 2000
+            })
           ]}
           className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-4">
             {partners.map((partner, index) => (
-              <CarouselItem key={index} className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <CarouselItem
+                key={index}
+                className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
+              >
                 <div className="group">
                   <div className="eco-card p-6 flex items-center justify-center h-24 hover:shadow-lg transition-all duration-300">
                     <img

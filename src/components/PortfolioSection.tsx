@@ -1,77 +1,71 @@
+// src/components/PortfolioSection.tsx (Updated with achievements from Slides 10-11)
 import React from "react";
 import { Recycle, Handshake, Users, Box, Banknote, Globe } from "lucide-react";
 
 const PortfolioSection: React.FC = () => {
   const portfolioItems = [
     {
-      icon: Recycle,
-      title: "5,000+ Tons Recycled",
-      description:
-        "Plastic, paper, and metal waste diverted from landfills since 2022.",
-      type: "Accomplishment",
-      since: "2022",
-      impact: "Environmental"
-    },
-    {
-      icon: Handshake,
-      title: "Nairobi River Commission",
-      description:
-        "Strategic partnership for community recycling and awareness campaigns across Kenya.",
-      type: "Partnership",
-      since: "2023"
-    },
-    {
-      icon: Users,
-      title: "Community Clean-Up Drives",
-      description:
-        "Mobilized over 10,000 volunteers for city-wide recycling and clean-up events.",
-      type: "Project",
-      year: "2023",
-      impact: "Community, Environment"
-    },
-    {
-      icon: Box,
-      title: "Smart Recycling Bins",
-      description:
-        "Installed 200+ IoT-enabled bins for efficient waste sorting in Nairobi.",
-      type: "Project",
-      year: "2024",
-      impact: "Innovation, Efficiency"
+      icon: Banknote,
+      title: "$5,000 from TEF",
+      description: "Grant used for purchase of Briquettes machine.",
+      type: "Funding",
+      since: "Recent",
+      impact: "Operations"
     },
     {
       icon: Banknote,
-      title: "KEPRO",
-      description:
-        "Financial and logistical support for scaling up recycling infrastructure and green jobs.",
-      type: "Partnership",
-      since: "2023"
+      title: "$10,000 from KCIC (in progress)",
+      description: "Grant for purchase of Truck.",
+      type: "Funding",
+      since: "In Progress",
+      impact: "Logistics"
+    },
+    {
+      icon: Banknote,
+      title: "$5,000 from CAPYEI (in progress)",
+      description: "Grant for buying of baling machine.",
+      type: "Funding",
+      since: "In Progress",
+      impact: "Operations"
+    },
+    {
+      icon: Recycle,
+      title: "10,000+ Tons Recycled",
+      description: "Plastic, paper, and metal waste diverted from landfills.",
+      type: "Accomplishment",
+      since: "Yearly",
+      impact: "Environmental"
+    },
+    {
+      icon: Users,
+      title: "100+ Jobs Created",
+      description: "Empowering youth and women through sustainable employment.",
+      type: "Impact",
+      year: "Ongoing",
+      impact: "Social"
     },
     {
       icon: Globe,
-      title: "NEMA",
+      title: "200+ Active Clients",
       description:
-        "Collaboration on sustainable waste management and environmental education initiatives.",
-      type: "Partnership",
-      since: "2024"
+        "Serving communities, businesses, and organizations across Kenya.",
+      type: "Traction",
+      since: "Current"
     }
   ];
 
   return (
-    <section
-      id="portfolio"
-      className="py-20 bg-gradient-to-br from-background to-eco-green-light"
-    >
+    <section id="portfolio" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Our <span className="gradient-text">Impact</span>
+            Our <span className="gradient-text">Achievements</span>
           </h2>
           <p className="text-xl text-muted-foreground">
             Discover the milestones and partnerships that define our journey
             toward a sustainable Kenya.
           </p>
         </div>
-
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolioItems.map((item, index) => (
             <div

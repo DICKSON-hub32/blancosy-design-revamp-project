@@ -2,10 +2,26 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // ← add useLocation
 import heroImage from "@/assets/hero-recycling.jpg";
 
 const HeroSection: React.FC = () => {
+  const location = useLocation();
+
+  // Reuse the same scroll logic as in Header.tsx
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname === "/") {
+      // Already on home → smooth scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      // On another page → redirect to home + scroll to section
+      window.location.href = `/#${sectionId}`;
+    }
+  };
+
   return (
     <section
       id="home"
@@ -26,22 +42,21 @@ const HeroSection: React.FC = () => {
             <div className="space-y-8">
               <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
                 <span className="gradient-text block">
-                  Turning Waste into Wealth
+                  Turning Waste into Wealth Through Tech and Innovation
                 </span>
-                {/* Through Tech & Innovation*/}
               </h1>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {/* Partner with Us → now scrolls to contact */}
               <Button
-                asChild
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90 px-8 py-6 text-lg font-semibold rounded-xl"
+                onClick={() => scrollToSection("contact")}
               >
-                <Link to="/contact">
-                  Partner with Us <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+                Partner with Us <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
+
               <Button
                 asChild
                 variant="outline"

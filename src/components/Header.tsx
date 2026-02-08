@@ -63,12 +63,12 @@ const Header: React.FC = () => {
               >
                 Gallery
               </Link>
-              {/* <Link
+              <Link
                 to="/blog"
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Blog
-              </Link> */}
+              </Link>
               <button
                 onClick={() => scrollToSection("contact")}
                 className="text-foreground hover:text-primary transition-colors font-medium"
@@ -80,9 +80,12 @@ const Header: React.FC = () => {
             {/* CTA Button */}
             <div className="hidden md:block">
               <Button asChild>
-                <Link to="/contact" className="eco-button">
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="eco-button"
+                >
                   Get Involved
-                </Link>
+                </button>
               </Button>
             </div>
 
@@ -144,9 +147,9 @@ const Header: React.FC = () => {
                   Contact
                 </button>
                 <Button asChild className="eco-button mt-3 self-start">
-                  <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                  <button onClick={() => scrollToSection("contact")}>
                     Get Involved
-                  </Link>
+                  </button>
                 </Button>
               </div>
             </nav>

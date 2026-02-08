@@ -72,6 +72,7 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Quick Links */}
+            {/* Quick Links */}
             <div className="space-y-6">
               <h3 className="text-lg font-semibold">Quick Links</h3>
               <nav className="space-y-3">
@@ -87,30 +88,52 @@ const Footer: React.FC = () => {
                 >
                   About Us
                 </Link>
-                <Link
-                  to="/services"
-                  className="block text-muted-foreground hover:text-primary transition-colors"
+
+                {/* Services → scrolls to section (works on any page) */}
+                <button
+                  onClick={() => {
+                    if (window.location.pathname === "/") {
+                      document
+                        .getElementById("services")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      window.location.href = "/#services";
+                    }
+                  }}
+                  className="block text-left text-muted-foreground hover:text-primary transition-colors w-full"
                 >
                   Services
-                </Link>
+                </button>
+
                 <Link
                   to="/gallery"
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
                   Gallery
                 </Link>
-                {/* <Link
+
+                <Link
                   to="/blog"
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
                   Blog
-                </Link> */}
-                <Link
-                  to="/contact"
-                  className="block text-muted-foreground hover:text-primary transition-colors"
+                </Link>
+
+                {/* Contact → scrolls to section (works on any page) */}
+                <button
+                  onClick={() => {
+                    if (window.location.pathname === "/") {
+                      document
+                        .getElementById("contact")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      window.location.href = "/#contact";
+                    }
+                  }}
+                  className="block text-left text-muted-foreground hover:text-primary transition-colors w-full"
                 >
                   Contact
-                </Link>
+                </button>
               </nav>
             </div>
 
@@ -176,29 +199,27 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border">
           <div className="container mx-auto px-4 py-6">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="text-sm text-muted-foreground">
-                © 2024 Blancosy Ltd. All rights reserved.
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">
+              {/* Copyright - always centered */}
+              <div className="text-center">
+                © 2026 Blancosy Ltd. All rights reserved.
               </div>
-              <div className="flex gap-6 text-sm">
+
+              {/* Links - centered together */}
+              <div className="flex items-center justify-center gap-6">
                 <button
                   onClick={() => setIsPrivacyOpen(true)}
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="hover:text-primary transition-colors"
                 >
                   Privacy Policy
                 </button>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Terms of Service
-                </a>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Cookie Policy
-                </a>
+                {/* Uncomment when ready */}
+                {/* <a href="#" className="hover:text-primary transition-colors">
+          Terms of Service
+        </a> */}
+                {/* <a href="#" className="hover:text-primary transition-colors">
+          Cookie Policy
+        </a> */}
               </div>
             </div>
           </div>

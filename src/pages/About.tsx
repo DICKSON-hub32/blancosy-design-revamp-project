@@ -1,3 +1,4 @@
+// src/pages/About.tsx (Updated description and team from Slides 14-15)
 import React from "react";
 import { Target, Heart, Zap, Award, Users, MapPin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,51 +11,50 @@ const About = () => {
   const teamMembers = [
     {
       name: "Antony Makanga",
-      role: "CEO & Co-Founder",
+      role: "Founder & CEO",
       description:
-        "Visionary leader passionate about green innovation and community empowerment.",
+        "A dynamic innovator with Diploma in Entrepreneurship & Innovation Management (EIM).",
       image: "./mil2.jpg"
     },
     {
       name: "Derrick Essanya",
-      role: "Co-Founder",
+      role: "Head of Operations",
       description:
-        "Bio-Tech enthusiast driving sustainable solutions through smart engineering.",
+        "An M&E practitioner with a certificate in Monitoring and Evaluation.",
       image: "./mil3.jpg"
+    },
+    {
+      name: "Esther Kiilu",
+      role: "COO",
+      description:
+        "A finance-oriented professional with Certificate in Financial Management and Reporting.",
+      image: "./mil1.jpg" // Reassigned from old COO
+    },
+    {
+      name: "Koina Erick",
+      role: "CTO",
+      description: "A professional with a Bachelors in Computer Science.",
+      image: "./mil4.jpg"
     },
     {
       name: "Dickson Esamai",
       role: "Senior UI/UX Designer/Developer",
       description:
-        "Creating engaging web designs and implementing them with code",
+        "Creative mind with skills in Web development and Web design.",
       image: "./mil5.jpg"
     },
     {
       name: "Javan",
       role: "Designer",
-      description: "Motivated graphic Designer with passion for Design",
+      description:
+        "Self-driven individual with a Certificate in Computer Packages and Presentations.",
       image: "./mil6.jpg"
-    },
-    {
-      name: "Koina Erick",
-      role: "CTO",
-      description:
-        "Tech visionary focused on innovative solutions for a sustainable future.",
-      image: "./mil4.jpg"
-    },
-    {
-      name: "Catherine Nderitu",
-      role: "COO",
-      description:
-        "Building partnerships and inspiring youth for a greener future.",
-      image: "./mil1.jpg"
     }
   ];
 
   return (
     <div className="min-h-screen">
       <Header />
-
       {/* Hero Section */}
       <section className="pt-24 pb-16 bg-gradient-to-br from-background to-eco-green-light">
         <div className="container mx-auto px-4">
@@ -63,13 +63,13 @@ const About = () => {
               About <span className="gradient-text">Blancosy</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Dedicated to reducing solid waste pollution through scalable,
-              biotechnology-driven recycling solutions.
+              Embedded Fintech WasteTech company transforming waste logistics in
+              urban Nairobi, focusing on recycling tech, fintech integration,
+              smart city solutions, circular economy, and financial inclusion.
             </p>
           </div>
         </div>
       </section>
-
       {/* Main About Content */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -84,7 +84,6 @@ const About = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
               </div>
-
               {/* Floating Impact Card */}
               <div className="absolute -bottom-8 -right-8 eco-card bg-white p-6 max-w-xs">
                 <div className="flex items-center gap-3 mb-2">
@@ -99,7 +98,6 @@ const About = () => {
                 </p>
               </div>
             </div>
-
             {/* Right Column - Content */}
             <div className="space-y-8">
               <div className="space-y-4">
@@ -114,7 +112,6 @@ const About = () => {
                   benefits.
                 </p>
               </div>
-
               <div className="text-xl space-y-4 text-muted-foreground">
                 <p>
                   We produce eco-friendly products such as{" "}
@@ -127,14 +124,13 @@ const About = () => {
                 <p>
                   Our approach promotes a circular economy—empowering
                   communities, generating jobs, and fostering sustainable
-                  practices.
+                  practices with embedded fintech for financial inclusion.
                 </p>
               </div>
             </div>
           </div>
         </div>
       </section>
-
       {/* Team Section */}
       <section className="py-20 bg-gradient-to-br from-background to-eco-green-light">
         <div className="container mx-auto px-4">
@@ -147,8 +143,7 @@ const About = () => {
               future for Kenya
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <div
                 key={index}
@@ -173,7 +168,6 @@ const About = () => {
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );

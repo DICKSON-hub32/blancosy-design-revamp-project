@@ -1,3 +1,4 @@
+// src/components/ProblemsSection.tsx (Updated with challenges from Slides 3 and 9)
 import React from "react";
 import {
   Users,
@@ -7,6 +8,7 @@ import {
   Utensils,
   Link,
   Venus,
+  Banknote,
   Zap,
   Flame,
   Award
@@ -15,57 +17,51 @@ import {
 const ProblemsSection: React.FC = () => {
   const problems = [
     {
-      icon: Users,
-      title: "Youth Unemployment",
-      description: "Creating green jobs to empower young people in Kenya."
+      icon: Trash,
+      title: "200M+ Tons of Waste Yearly in Africa",
+      description:
+        "Massive waste generation in urban areas like Nairobi (60% share)."
     },
     {
       icon: Recycle,
-      title: "Low Recycling Rates",
-      description:
-        "Increasing recycling through accessible and rewarding systems."
+      title: "70% Waste Uncollected",
+      description: "Leading to pollution, disease, and health hazards."
     },
     {
       icon: Leaf,
-      title: "Environmental Degradation",
-      description: "Protecting ecosystems by reducing waste pollution."
+      title: "Climate Impact",
+      description: "Waste contributes to greenhouse gas emissions."
     },
     {
-      icon: Trash,
-      title: "Solid Waste Pollution",
+      icon: Users,
+      title: "Financial Exclusion",
       description:
-        "Transforming waste into valuable resources with innovative technology."
-    },
-    {
-      icon: Utensils,
-      title: "Food Waste Mismanagement",
-      description: "Converting food waste into nutrients and energy."
+        "Informal collectors lack access to banking and financial services."
     },
     {
       icon: Link,
-      title: "Lack of Circular Economy Systems",
-      description: "Promoting sustainable practices through a circular economy."
-    },
-    {
-      icon: Venus,
-      title: "Gender Disparities in Green Jobs Access",
-      description: "Ensuring inclusive opportunities in the green economy."
+      title: "Data Gap",
+      description: "No transparency in waste management logistics."
     },
     {
       icon: Zap,
-      title: "Limited Access to Clean, Affordable Energy",
-      description: "Providing eco-friendly energy solutions like Eco-Makaa."
+      title: "Inconsistent Market Demand",
+      description: "Seasonality of customers affecting operations."
+    },
+    {
+      icon: Banknote,
+      title: "Limited Access to Finance",
+      description: "High technology costs and funding challenges."
+    },
+    {
+      icon: Venus,
+      title: "Infrastructure Gaps",
+      description: "Scaling issues due to poor infrastructure."
     },
     {
       icon: Flame,
-      title: "Overreliance on Non-Renewable Resources",
-      description: "Offering sustainable alternatives to traditional fuels."
-    },
-    {
-      icon: Award,
-      title: "Lack of Incentive for Waste Sorting & Recycling",
-      description:
-        "Rewarding sustainable actions through our Smart Recycling App."
+      title: "Competing Priorities",
+      description: "Misaligned strategies in the sector."
     }
   ];
 
@@ -74,14 +70,13 @@ const ProblemsSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Problems We Seek to <span className="gradient-text">Solve</span>
+            Challenges We <span className="gradient-text">Address</span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Addressing critical environmental and social challenges through
-            innovative recycling solutions.
+            Tackling critical environmental, social, and operational challenges
+            in waste management across Africa.
           </p>
         </div>
-
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {problems.map((problem, index) => (
             <div

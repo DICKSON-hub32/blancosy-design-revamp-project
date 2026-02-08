@@ -1,7 +1,7 @@
+// src/components/ContactSection.tsx
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 
 const ContactSection: React.FC = () => {
@@ -24,7 +24,6 @@ const ContactSection: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -48,13 +47,13 @@ const ContactSection: React.FC = () => {
       title: "Call Us",
       info: "+254758277793",
       action: "tel:+254758277793"
-    },
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      info: "Ruaraka, Nairobi, Kenya",
-      action: "#"
     }
+    // {
+    //   icon: MapPin,
+    //   title: "Visit Us",
+    //   info: "Ruaraka, Nairobi, Kenya",
+    //   action: "#"
+    // }
   ];
 
   return (
@@ -72,133 +71,142 @@ const ContactSection: React.FC = () => {
         </div>
 
         {/* Google Maps */}
-        <div className="mb-16">
+        <div className="mb-16 rounded-2xl overflow-hidden shadow-2xl">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.823393772252!2d36.841929674965755!3d-1.2795745987082554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTYnNDYuNSJTIDM2wrA1MCc0MC4yIkU!5e0!3m2!1sen!2ske!4v1753910717481!5m2!1sen!2ske"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.817090205754!2d36.82194631475395!3d-1.282681999061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d5b3f3d7c1%3A0x4b4b4b4b4b4b4b4b!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1630000000000"
             width="100%"
-            height="270"
+            height="400"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="rounded-lg shadow-md"
-          />
+          ></iframe>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        {/* Equal-height columns container */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Column - Contact Form */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-4">Send us a Message</h3>
-              <p className="text-muted-foreground">
-                Whether you're interested in our products, want to partner with
-                us, or support our mission, we'd love to hear from you.
-              </p>
-            </div>
+          <div className="flex flex-col flex-1">
+            <div className="space-y-8 flex-grow">
+              <div className="flex justify-center items-center">
+                <h3 className="text-2xl font-bold mb-4">
+                  Send us a <span className="gradient-text">Message</span>
+                </h3>
+              </div>
+              <div>
+                <p className="text-muted-foreground">
+                  Whether you're interested in our products, want to partner
+                  with us, or support our mission, we'd love to hear from you.
+                </p>
+              </div>
 
-            <div className="space-y-6">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium mb-2"
+                      >
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
+                        placeholder="Your full name"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium mb-2"
+                      >
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
+                  </div>
+
                   <div>
                     <label
-                      htmlFor="name"
+                      htmlFor="organization"
                       className="block text-sm font-medium mb-2"
                     >
-                      Full Name *
+                      Organization (Optional)
                     </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
+                      id="organization"
+                      name="organization"
+                      value={formData.organization}
                       onChange={handleInputChange}
-                      required
                       className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-                      placeholder="Your full name"
+                      placeholder="Your organization or company"
                     />
                   </div>
+
                   <div>
                     <label
-                      htmlFor="email"
+                      htmlFor="message"
                       className="block text-sm font-medium mb-2"
                     >
-                      Email Address *
+                      Message *
                     </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-                      placeholder="your.email@example.com"
+                      rows={6}
+                      className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors resize-none"
+                      placeholder="Tell us about your interest in our services or how you'd like to get involved..."
                     />
                   </div>
-                </div>
 
-                <div>
-                  <label
-                    htmlFor="organization"
-                    className="block text-sm font-medium mb-2"
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="eco-button w-full"
                   >
-                    Organization (Optional)
-                  </label>
-                  <input
-                    type="text"
-                    id="organization"
-                    name="organization"
-                    value={formData.organization}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-                    placeholder="Your organization or company"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors resize-none"
-                    placeholder="Tell us about your interest in our services or how you'd like to get involved..."
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="eco-button w-full"
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Sending...
-                    </div>
-                  ) : (
-                    <div className="flex items-center gap-2">
-                      <Send className="h-4 w-4" />
-                      Send Message
-                    </div>
-                  )}
-                </Button>
-              </form>
+                    {isSubmitting ? (
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        Sending...
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <Send className="h-4 w-4" />
+                        Send Message
+                      </div>
+                    )}
+                  </Button>
+                </form>
+              </div>
             </div>
           </div>
 
           {/* Right Column - Contact Info & CTA */}
-          <div className="space-y-8">
+          <div className="flex flex-col flex-1 space-y-8">
+            <div className="flex justify-center items-center">
+              <h3 className="text-2xl font-bold mb-6">
+                Contact <span className="gradient-text">Information</span>
+              </h3>
+            </div>
             <div>
-              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               <div className="space-y-4">
                 {contactInfo.map((contact, index) => {
                   const IconComponent = contact.icon;
@@ -229,15 +237,19 @@ const ContactSection: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span className="text-sm">Nairobi River Commission</span>
+                  <span className="text-sm">TEF</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span className="text-sm">KEPRO</span>
+                  <span className="text-sm">KCIC</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
-                  <span className="text-sm">NEMA</span>
+                  <span className="text-sm">BeGreen</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-primary" />
+                  <span className="text-sm">CAPYEI</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-primary" />
@@ -251,7 +263,7 @@ const ContactSection: React.FC = () => {
             </div>
 
             {/* Mission Statement */}
-            <div className="eco-card bg-gradient-to-br from-accent/5 to-eco-blue/5 border-accent/20">
+            {/* <div className="eco-card bg-gradient-to-br from-accent/5 to-eco-blue/5 border-accent/20">
               <h4 className="text-xl font-semibold mb-3">Why Work With Us?</h4>
               <p className="text-muted-foreground">
                 Join a movement that's not just about business, but about
@@ -259,7 +271,7 @@ const ContactSection: React.FC = () => {
                 communities. Together, we can build a sustainable future that
                 benefits everyone.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
