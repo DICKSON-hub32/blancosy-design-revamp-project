@@ -24,15 +24,45 @@ const ContactSection: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for your interest. We'll get back to you soon."
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: "8d56e098-0539-42cb-942a-e0eeba62130f", // Get this from web3forms.com
+          name: formData.name,
+          email: formData.email,
+          organization: formData.organization,
+          message: formData.message,
+          to: "vivablancos2024@gmail.com"
+        })
       });
-      setFormData({ name: "", email: "", organization: "", message: "" });
-    }, 1000);
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description:
+            "Thank you for your interest. We'll get back to you soon."
+        });
+        setFormData({ name: "", email: "", organization: "", message: "" });
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [

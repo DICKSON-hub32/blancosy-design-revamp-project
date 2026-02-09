@@ -12,62 +12,54 @@ const Gallery = () => {
       title: "Community Recycling Drive",
       description:
         "Local community members participating in our weekly recycling collection",
-      imageUrl:
-        "https://res.cloudinary.com/demo/image/upload/v1234567890/community-recycling-drive.jpg" // ← REPLACE
+      imageUrl: "/gallery/1.JPG" // ← REPLACE
     },
     {
       id: 2,
       title: "ECO-JIKO Stove Production",
       description: "Our team crafting efficient eco-friendly cooking stoves",
-      imageUrl:
-        "https://res.cloudinary.com/demo/image/upload/v1234567890/eco-jiko-production.jpg" // ← REPLACE
+      imageUrl: "/gallery/2.JPG" // ← REPLACE
     },
     {
       id: 3,
       title: "River Cleanup Initiative",
       description:
         "Volunteers working together to clean and restore local waterways",
-      imageUrl:
-        "https://res.cloudinary.com/demo/image/upload/v1234567890/river-cleanup.jpg" // ← REPLACE
+      imageUrl: "/gallery/3.JPG" // ← REPLACE
     },
     {
       id: 4,
       title: "Ecomakaa Briquettes",
       description: "Sustainable fuel briquettes made from recycled paper waste",
-      imageUrl:
-        "https://res.cloudinary.com/demo/image/upload/v1234567890/ecomakaa-briquettes.jpg" // ← REPLACE
+      imageUrl: "/gallery/4.JPG" // ← REPLACE
     },
     {
       id: 5,
       title: "Youth Training Program",
       description:
         "Teaching young people sustainable waste management practices",
-      imageUrl:
-        "https://res.cloudinary.com/demo/image/upload/v1234567890/youth-training.jpg" // ← REPLACE
+      imageUrl: "/gallery/5.JPG" // ← REPLACE
     },
     {
       id: 6,
       title: "Waste Processing Facility",
       description:
         "Our modern facility where waste is transformed into valuable products",
-      imageUrl:
-        "https://res.cloudinary.com/demo/image/upload/v1234567890/waste-processing.jpg" // ← REPLACE
+      imageUrl: "/gallery/6.JPG" // ← REPLACE
     },
     {
       id: 7,
       title: "Community Workshop",
       description:
         "Educational sessions on environmental conservation and recycling",
-      imageUrl:
-        "https://res.cloudinary.com/demo/image/upload/v1234567890/community-workshop.jpg" // ← REPLACE
+      imageUrl: "/gallery/7.JPG" // ← REPLACE
     },
     {
       id: 8,
       title: "Green Technology Innovation",
       description:
         "Latest eco-friendly technologies being implemented in our processes",
-      imageUrl:
-        "https://res.cloudinary.com/demo/image/upload/v1234567890/green-tech-innovation.jpg" // ← REPLACE
+      imageUrl: "/gallery/8.JPG" // ← REPLACE
     }
   ];
 
@@ -118,14 +110,14 @@ const Gallery = () => {
                   </div>
 
                   {/* Caption / description */}
-                  <div className="p-5 md:p-6">
+                  {/* <div className="p-5 md:p-6">
                     <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                       {image.title}
                     </h3>
                     <p className="text-sm text-muted-foreground line-clamp-3">
                       {image.description}
                     </p>
-                  </div>
+                  </div> */}
                 </Card>
               ))}
             </div>
