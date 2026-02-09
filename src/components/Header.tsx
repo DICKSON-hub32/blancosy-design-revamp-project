@@ -63,12 +63,12 @@ const Header: React.FC = () => {
               >
                 Gallery
               </Link>
-              <Link
+              {/* <Link
                 to="/blog"
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 Blog
-              </Link>
+              </Link> */}
               <button
                 onClick={() => scrollToSection("contact")}
                 className="text-foreground hover:text-primary transition-colors font-medium"

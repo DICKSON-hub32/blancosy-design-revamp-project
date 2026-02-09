@@ -112,12 +112,12 @@ const Footer: React.FC = () => {
                   Gallery
                 </Link>
 
-                <Link
+                {/* <Link
                   to="/blog"
                   className="block text-muted-foreground hover:text-primary transition-colors"
                 >
                   Blog
-                </Link>
+                </Link> */}
 
                 {/* Contact → scrolls to section (works on any page) */}
                 <button
