@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+
+@keyframes partnership-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partnership-scroll {
+  animation: partnership-scroll 20s linear infinite;
+}
+
+.partnership-scroll:hover {
+  animation-play-state: paused;
+}

@@ -43,16 +43,28 @@ All colors MUST be HSL.
     --eco-blue: 200 85% 45%;
     --eco-yellow: 45 95% 55%;
     --earth-brown: 25 40% 40%;
-    
+
     /* Gradients */
-    --gradient-eco: linear-gradient(135deg, hsl(var(--eco-green)), hsl(var(--eco-blue)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--eco-green) / 0.9), hsl(var(--eco-blue) / 0.8));
-    --gradient-card: linear-gradient(145deg, hsl(var(--background)), hsl(var(--eco-green-light)));
-    
+    --gradient-eco: linear-gradient(
+      135deg,
+      hsl(var(--eco-green)),
+      hsl(var(--eco-blue))
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(var(--eco-green) / 0.9),
+      hsl(var(--eco-blue) / 0.8)
+    );
+    --gradient-card: linear-gradient(
+      145deg,
+      hsl(var(--background)),
+      hsl(var(--eco-green-light))
+    );
+
     /* Shadows */
     --shadow-eco: 0 10px 30px -5px hsl(var(--eco-green) / 0.3);
     --shadow-gentle: 0 4px 20px -4px hsl(var(--foreground) / 0.1);
-    
+
     /* Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -112,12 +124,24 @@ All colors MUST be HSL.
     --eco-blue: 200 75% 55%;
     --eco-yellow: 45 85% 60%;
     --earth-brown: 25 35% 45%;
-    
+
     /* Dark gradients */
-    --gradient-eco: linear-gradient(135deg, hsl(var(--eco-green)), hsl(var(--eco-blue)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--eco-green) / 0.8), hsl(var(--eco-blue) / 0.7));
-    --gradient-card: linear-gradient(145deg, hsl(var(--background)), hsl(var(--eco-green-light)));
-    
+    --gradient-eco: linear-gradient(
+      135deg,
+      hsl(var(--eco-green)),
+      hsl(var(--eco-blue))
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(var(--eco-green) / 0.8),
+      hsl(var(--eco-blue) / 0.7)
+    );
+    --gradient-card: linear-gradient(
+      145deg,
+      hsl(var(--background)),
+      hsl(var(--eco-green-light))
+    );
+
     /* Dark shadows */
     --shadow-eco: 0 10px 30px -5px hsl(var(--eco-green) / 0.4);
     --shadow-gentle: 0 4px 20px -4px hsl(var(--background) / 0.8);
@@ -140,7 +164,7 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-sans;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
@@ -150,21 +174,25 @@ All colors MUST be HSL.
   .eco-card {
     @apply bg-gradient-to-br from-background to-primary/5 backdrop-blur-sm border border-primary/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
   }
-  
+
   .eco-button {
     @apply bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
   }
-  
+
   .eco-button-outline {
     @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg;
   }
-  
+
   .gradient-text {
     @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
   }
-  
+
   .hero-gradient {
-    background: linear-gradient(135deg, hsl(var(--eco-green) / 0.9), hsl(var(--eco-blue) / 0.8));
+    background: linear-gradient(
+      135deg,
+      hsl(var(--eco-green) / 0.9),
+      hsl(var(--eco-blue) / 0.8)
+    );
   }
 }
 
@@ -172,7 +200,7 @@ All colors MUST be HSL.
   .animate-fade-up {
     animation: fadeUp 0.6s ease-out forwards;
   }
-  
+
   .animate-slide-in {
     animation: slideIn 0.8s ease-out forwards;
   }
@@ -198,4 +226,42 @@ All colors MUST be HSL.
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@keyframes partnership-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partnership-scroll {
+  animation: partnership-scroll 20s linear infinite;
+}
+
+.partnership-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes circularScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      calc(-280px * 4 - 2rem * 3)
+    ); /* Width of 4 cards + gaps */
+  }
+}
+
+.animate-circular-scroll {
+  animation: circularScroll 30s linear infinite;
+  will-change: transform;
+}
+
+/* Pause animation on hover */
+.animate-circular-scroll:hover {
+  animation-play-state: paused;
 }
