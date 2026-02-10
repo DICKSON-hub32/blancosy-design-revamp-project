@@ -14,28 +14,10 @@ const RVMSection: React.FC = () => {
         "Advanced computer vision identifies and sorts different types of recyclable materials automatically."
     },
     {
-      icon: Zap,
-      title: "Energy Generation",
-      description:
-        "Convert organic waste into clean, renewable energy through our proprietary bioengineering process."
-    },
-    {
-      icon: Leaf,
-      title: "Nutrient Recovery",
-      description:
-        "Transform food waste into high-quality soil nutrients and organic fertilizers."
-    },
-    {
       icon: DollarSign,
       title: "Instant Rewards",
       description:
         "Receive immediate compensation for your recyclables through mobile money or reward points."
-    },
-    {
-      icon: Globe,
-      title: "Blockchain Traceability",
-      description:
-        "ESG and carbon credit tracking for transparent waste management."
     }
   ];
 
@@ -66,10 +48,8 @@ const RVMSection: React.FC = () => {
           <div className="flex flex-col space-y-8">
             <div className="space-y-6">
               <p className="text-xl leading-relaxed text-muted-foreground">
-                Our state-of-the-art Reverse Vending Machines use advanced AI
-                and bioengineering to process recyclable materials efficiently.
-                Track waste by type and volume with blockchain-powered ESG and
-                carbon credit traceability.
+                Sort waste and reward collectors with a redeemable point via our
+                app which is intergrated in the RVM.
               </p>
             </div>
 

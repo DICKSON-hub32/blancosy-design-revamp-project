@@ -5,32 +5,8 @@ import { Recycle, Handshake, Users, Box, Banknote, Globe } from "lucide-react";
 const PortfolioSection: React.FC = () => {
   const portfolioItems = [
     {
-      icon: Banknote,
-      title: "$5,000 from TEF",
-      description: "Grant used for purchase of Briquettes machine.",
-      type: "Funding",
-      since: "Recent",
-      impact: "Operations"
-    },
-    {
-      icon: Banknote,
-      title: "$10,000 from KCIC (in progress)",
-      description: "Grant for purchase of Truck.",
-      type: "Funding",
-      since: "In Progress",
-      impact: "Logistics"
-    },
-    {
-      icon: Banknote,
-      title: "$5,000 from CAPYEI (in progress)",
-      description: "Grant for buying of baling machine.",
-      type: "Funding",
-      since: "In Progress",
-      impact: "Operations"
-    },
-    {
       icon: Recycle,
-      title: "10,000+ Tons Recycled",
+      title: "5,000+ Tons Recycled",
       description: "Plastic, paper, and metal waste diverted from landfills.",
       type: "Accomplishment",
       since: "Yearly",
@@ -38,7 +14,7 @@ const PortfolioSection: React.FC = () => {
     },
     {
       icon: Users,
-      title: "100+ Jobs Created",
+      title: "24 Jobs Created",
       description: "Empowering youth and women through sustainable employment.",
       type: "Impact",
       year: "Ongoing",
@@ -46,7 +22,7 @@ const PortfolioSection: React.FC = () => {
     },
     {
       icon: Globe,
-      title: "200+ Active Clients",
+      title: "216 Active Clients",
       description:
         "Serving communities, businesses, and organizations across Kenya.",
       type: "Traction",
@@ -62,8 +38,8 @@ const PortfolioSection: React.FC = () => {
             Our <span className="gradient-text">Achievements</span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Discover the milestones and partnerships that define our journey
-            toward a sustainable Kenya.
+            Discover the milestones that define our journey toward a sustainable
+            Kenya.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

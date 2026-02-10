@@ -73,8 +73,8 @@ const ProblemsSection: React.FC = () => {
             Challenges We <span className="gradient-text">Address</span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Tackling critical environmental, social, and operational challenges
-            in waste management across Africa.
+            What if waste activities could be properly recorded, rewarded and
+            financed?
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

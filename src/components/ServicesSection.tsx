@@ -6,6 +6,7 @@ import {
   Waves,
   Package,
   Globe,
+  CheckCircle,
   Box,
   ArrowRight
 } from "lucide-react";
@@ -40,9 +41,9 @@ const ServicesSection: React.FC = () => {
     },
     {
       icon: Globe,
-      title: "Credits",
+      title: "Loans",
       description:
-        "Carbon credit monetization through blockchain traceability.",
+        "Digitizing waste collection and building the financial layer for circular economy.",
       color: "eco-green"
     }
   ];
@@ -56,8 +57,9 @@ const ServicesSection: React.FC = () => {
             Our <span className="gradient-text">Services</span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Comprehensive sustainable solutions transforming waste into valuable
-            resources while empowering communities across Kenya.
+            We digitize recyclable materials at the point of collection,
+            creating verified records that unlock payments, incentives, and
+            trusted data.
           </p>
         </div>
         {/* Services Grid */}
@@ -84,70 +86,187 @@ const ServicesSection: React.FC = () => {
           })}
         </div>
         {/* Featured Products Section */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column - Content */}
-          <div className="lg:col-span-2 text-center">
-            <h3 className="text-3xl md:text-4xl font-bold inline-block">
+        {/* Featured Products Section */}
+        <div className="mt-16">
+          {/* Centered Title */}
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold">
               Our <span className="gradient-text">Eco Products</span>
             </h3>
+            <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+              Sustainable alternatives designed to reduce environmental impact
+              while delivering performance and affordability.
+            </p>
           </div>
-          <div className="space-y-8">
-            <div className="space-y-8">
-              {/* Ecomakaa */}
-              <div className="eco-card bg-eco-green/5 border-eco-green/20">
-                <h4 className="text-xl font-semibold mb-2 text-eco-green">
-                  Ecomakaa
-                </h4>
-                <p className="text-muted-foreground">
+
+          {/* Three product blocks – each with text + image side-by-side */}
+          <div className="space-y-6 lg:space-y-8">
+            {/* Product 1: Ecomakaa */}
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
+              {/* Text */}
+              <div className="space-y-3">
+                <h4 className="text-2xl font-bold text-eco-green">Eco-makaa</h4>
+                <p className="text-muted-foreground leading-relaxed">
                   A revolutionary charcoal alternative made from recycled waste
                   paper. Burns cleaner, lasts longer, and produces significantly
                   less smoke than traditional charcoal.
                 </p>
-                <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
-                  <li>• 80% less smoke than traditional charcoal</li>
-                  <li>• Made from 100% recycled paper waste</li>
-                  <li>• Longer burning time</li>
-                  <li>• Affordable and sustainable</li>
+                <ul className="space-y-1.5 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    80% less smoke than traditional charcoal
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    Made from 100% recycled paper waste
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    Longer burning time
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    Affordable and sustainable
+                  </li>
                 </ul>
               </div>
-              {/* Eco-Jiko */}
-              <div className="eco-card bg-eco-green/5 border-eco-green/20">
-                <h4 className="text-xl font-semibold mb-2 text-eco-green">
-                  Eco-Jiko
-                </h4>
-                <p className="text-muted-foreground">
-                  An energy-efficient cooking stove specifically designed to
-                  maximize the performance of Ecomakaa while reducing fuel
-                  consumption.
+
+              {/* Image */}
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl group h-[200px] lg:h-[220px]">
+                <img
+                  src="/eco-makaa.jpeg"
+                  alt="Ecomakaa charcoal briquettes"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+                <div className="absolute bottom-3 left-3 text-white">
+                  <h4 className="text-base font-bold drop-shadow-lg">
+                    Eco-makaa
+                  </h4>
+                </div>
+                {/* Floating Stats */}
+                <div className="absolute top-3 right-3 flex flex-col gap-2">
+                  <div className="eco-card bg-white/90 p-2 text-center backdrop-blur-sm shadow-md">
+                    <div className="text-lg font-bold text-primary">100%</div>
+                    <div className="text-[10px] text-muted-foreground">
+                      Eco-Friendly
+                    </div>
+                  </div>
+                  <div className="eco-card bg-white/90 p-2 text-center backdrop-blur-sm shadow-md">
+                    <div className="text-lg font-bold text-primary">50%</div>
+                    <div className="text-[10px] text-muted-foreground">
+                      More Efficient
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Product 2: Eco-Jiko */}
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
+              {/* Text */}
+              <div className="space-y-3">
+                <h4 className="text-2xl font-bold text-eco-blue">Eco-Jiko</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  An energy-efficient cooking stove optimized for Ecomakaa,
+                  reducing fuel use while providing clean, fast cooking.
                 </p>
-                <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
-                  <li>• 50% more fuel efficient</li>
-                  <li>• Optimized for Ecomakaa</li>
-                  <li>• Durable and easy to use</li>
-                  <li>• Reduces cooking time</li>
+                <ul className="space-y-1.5 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    50% more fuel efficient
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    Perfectly optimized for Ecomakaa
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    Durable & easy to use
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    Reduces cooking time
+                  </li>
                 </ul>
               </div>
+
+              {/* Image */}
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl group h-[200px] lg:h-[220px]">
+                <img
+                  src="/eco-jiko.jpeg"
+                  alt="Eco-Jiko energy-efficient stove"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+                <div className="absolute bottom-3 left-3 text-white">
+                  <h4 className="text-base font-bold drop-shadow-lg">
+                    Eco-Jiko
+                  </h4>
+                </div>
+                {/* Floating Stats */}
+                <div className="absolute top-3 right-3 flex flex-col gap-2">
+                  <div className="eco-card bg-white/90 p-2 text-center backdrop-blur-sm shadow-md">
+                    <div className="text-lg font-bold text-primary">100%</div>
+                    <div className="text-[10px] text-muted-foreground">
+                      Eco-Friendly
+                    </div>
+                  </div>
+                  <div className="eco-card bg-white/90 p-2 text-center backdrop-blur-sm shadow-md">
+                    <div className="text-lg font-bold text-primary">50%</div>
+                    <div className="text-[10px] text-muted-foreground">
+                      More Efficient
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          {/* Right Column - Image */}
-          <div className="relative mb-5">
-            <div className="relative mt-5 overflow-hidden rounded-2xl shadow-2xl">
-              <img
-                src={ecoProductsImage}
-                alt="Eco-friendly products by Blancosy"
-                className="w-full h-[530px] object-cover transition-transform duration-700 hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent"></div>
-            </div>
-            {/* Floating Stats */}
-            <div className="absolute top-8 right-8 eco-card bg-white p-4 text-center">
-              <div className="text-2xl font-bold text-primary">100%</div>
-              <div className="text-sm text-muted-foreground">Eco-Friendly</div>
-            </div>
-            <div className="absolute bottom-8 left-8 eco-card bg-white p-4 text-center">
-              <div className="text-2xl font-bold text-primary">50%</div>
-              <div className="text-sm text-muted-foreground">
-                More Efficient
+
+            {/* Product 3: Plastic Pellets */}
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
+              {/* Text */}
+              <div className="space-y-3">
+                <h4 className="text-2xl font-bold text-eco-yellow">
+                  Plastic Pellets
+                </h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  High-quality recycled plastic pellets produced from collected
+                  and processed waste plastics. Ideal for manufacturing new
+                  products and closing the loop in the circular economy.
+                </p>
+                <ul className="space-y-1.5 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    Made from post-consumer recycled plastics
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    Consistent size and quality for industrial use
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    Reduces need for virgin plastic production
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    Supports local manufacturing & job creation
+                  </li>
+                </ul>
+              </div>
+
+              {/* Image + Floating Stats */}
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl group h-[200px] lg:h-[220px]">
+                <img
+                  src="/pellets.jpeg"
+                  alt="Recycled plastic pellets"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-primary/20 to-transparent" />
+                <div className="absolute bottom-3 left-3 text-white">
+                  <h4 className="text-base font-bold drop-shadow-lg">
+                    Plastic Pellets
+                  </h4>
+                </div>
               </div>
             </div>
           </div>

@@ -69,8 +69,8 @@ const ContactSection: React.FC = () => {
     {
       icon: Mail,
       title: "Email Us",
-      info: "blancos5stars@gmail.com",
-      action: "mailto:blancos5stars@gmail.com"
+      info: "info@blancosy.co.ke ",
+      action: "mailto:info@blancosy.co.ke "
     },
     {
       icon: Phone,
@@ -103,7 +103,7 @@ const ContactSection: React.FC = () => {
         {/* Google Maps */}
         <div className="mb-16 rounded-2xl overflow-hidden shadow-2xl">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.817090205754!2d36.82194631475395!3d-1.282681999061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d5b3f3d7c1%3A0x4b4b4b4b4b4b4b4b!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1630000000000"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.823393772252!2d36.841929674965755!3d-1.2795745987082554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTYnNDYuNSJTIDM2wrA1MCc0MC4yIkU!5e0!3m2!1sen!2ske!4v1770702674792!5m2!1sen!2ske"
             width="100%"
             height="400"
             style={{ border: 0 }}
@@ -219,7 +219,7 @@ const ContactSection: React.FC = () => {
                       </div>
                     ) : (
                       <div className="flex items-center gap-2">
-                        <Send className="h-4 w-4" />
+                        <Send className="h-2 w-4" />
                         Send Message
                       </div>
                     )}
@@ -230,7 +230,7 @@ const ContactSection: React.FC = () => {
           </div>
 
           {/* Right Column - Contact Info & CTA */}
-          <div className="flex flex-col flex-1 space-y-8">
+          <div className="flex flex-col flex-1 space-y-28">
             <div className="flex justify-center items-center">
               <h3 className="text-2xl font-bold mb-6">
                 Contact <span className="gradient-text">Information</span>
@@ -260,37 +260,6 @@ const ContactSection: React.FC = () => {
             </div>
 
             {/* Partnership Opportunities */}
-            <div className="eco-card bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
-              <h4 className="text-xl font-semibold mb-4">
-                Partnership Opportunities
-              </h4>
-              <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-primary" />
-                  <span className="text-sm">TEF</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-primary" />
-                  <span className="text-sm">KCIC</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-primary" />
-                  <span className="text-sm">BeGreen</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-primary" />
-                  <span className="text-sm">CAPYEI</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-primary" />
-                  <span className="text-sm">Community groups and NGOs</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-primary" />
-                  <span className="text-sm">Educational institutions</span>
-                </div>
-              </div>
-            </div>
 
             {/* Mission Statement */}
             {/* <div className="eco-card bg-gradient-to-br from-accent/5 to-eco-blue/5 border-accent/20">
@@ -302,6 +271,59 @@ const ContactSection: React.FC = () => {
                 benefits everyone.
               </p>
             </div> */}
+          </div>
+        </div>
+        {/* Partnership Carousel - Below both columns */}
+        {/* Partnership Carousel - Below both columns */}
+        <div className="mt-16 overflow-hidden">
+          <h4 className="text-2xl font-bold text-center mb-8">
+            Partnership <span className="gradient-text">Opportunities</span>
+          </h4>
+
+          <div className="relative">
+            {/* Gradient overlays for fade effect */}
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
+
+            <div className="overflow-hidden">
+              <div className="flex gap-8 animate-circular-scroll">
+                {/* Repeat the set multiple times for seamless infinite scroll */}
+                {[...Array(6)].map((_, setIndex) => (
+                  <React.Fragment key={setIndex}>
+                    <div className="flex-shrink-0 eco-card bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 min-w-[280px] h-24 px-6 flex items-center justify-center">
+                      <img
+                        src="./afosi.png"
+                        alt="AFOSI logo"
+                        className="max-h-12 w-auto object-contain"
+                      />
+                    </div>
+                    <div className="flex-shrink-0 eco-card bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 min-w-[280px] h-24 px-6 flex items-center justify-center">
+                      <img
+                        src="./kcic.png"
+                        alt="KCIC logo"
+                        className="max-h-12 items-center w-auto object-contain"
+                      />
+                    </div>
+                    <div className="flex-shrink-0 eco-card bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 min-w-[280px] px-6 py-4">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                        <span className="font-medium">
+                          Community groups and NGOs
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex-shrink-0 eco-card bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 min-w-[280px] px-6 py-4">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                        <span className="font-medium">
+                          Educational institutions
+                        </span>
+                      </div>
+                    </div>
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

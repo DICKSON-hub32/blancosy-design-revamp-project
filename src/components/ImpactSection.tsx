@@ -13,13 +13,13 @@ const ImpactSection: React.FC = () => {
   const impacts = [
     {
       icon: Recycle,
-      value: "10,000+",
+      value: "5,000+",
       label: "Tons Recycled Annually",
       description: "Environmental conservation through waste transformation"
     },
     {
       icon: Users,
-      value: "100+",
+      value: "24",
       label: "Jobs Created",
       description: "Youth and women empowerment initiatives"
     },
@@ -31,7 +31,7 @@ const ImpactSection: React.FC = () => {
     },
     {
       icon: Heart,
-      value: "10,000",
+      value: "1,200",
       label: "Eco-Jikos Manufactured",
       description: "Cleaner cooking solutions"
     },

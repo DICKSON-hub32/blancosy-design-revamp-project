@@ -17,18 +17,18 @@ const About = () => {
       image: "./mil2.jpg"
     },
     {
-      name: "Derrick Essanya",
+      name: "Jackson Adisa",
       role: "Head of Operations",
       description:
         "An M&E practitioner with a certificate in Monitoring and Evaluation.",
-      image: "./mil3.jpg"
+      image: "./mil1.jpeg"
     },
     {
-      name: "Esther Kiilu",
-      role: "COO",
+      name: "Derrick Essanya",
+      role: "Accountant",
       description:
         "A finance-oriented professional with Certificate in Financial Management and Reporting.",
-      image: "./mil1.jpg" // Reassigned from old COO
+      image: "./mil3.jpg" // Reassigned from old COO
     },
     {
       name: "Koina Erick",
@@ -40,15 +40,15 @@ const About = () => {
       name: "Dickson Esamai",
       role: "Senior UI/UX Designer/Developer",
       description:
-        "Creative mind with skills in Web development and Web design.",
+        "Creative mind with skills in Web development and system development.",
       image: "./mil5.jpg"
     },
     {
-      name: "Javan",
+      name: "Sophline Wakula",
       role: "Designer",
       description:
         "Self-driven individual with a Certificate in Computer Packages and Presentations.",
-      image: "./mil6.jpg"
+      image: "./mil6.jpeg"
     }
   ];
 
@@ -63,9 +63,7 @@ const About = () => {
               About <span className="gradient-text">Blancosy</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Embedded Fintech WasteTech company transforming waste logistics in
-              urban Nairobi, focusing on recycling tech, fintech integration,
-              smart city solutions, circular economy, and financial inclusion.
+              We are building the financial layer for the circular economy.
             </p>
           </div>
         </div>
@@ -78,9 +76,9 @@ const About = () => {
             <div className="relative">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
-                  src={communityImage}
+                  src="./about1.jpeg"
                   alt="Community impact in Kenya"
-                  className="w-full h-[500px] object-cover transition-transform duration-700 hover:scale-105"
+                  className="w-full h-[600px] object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
               </div>
@@ -105,26 +103,38 @@ const About = () => {
                   Our <span className="gradient-text">Story</span>
                 </h2>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  Blancosy Limited is a Nairobi-based startup (founded in 2022)
-                  reshaping recycling through bioengineered technology. Our
-                  signature REEMS system turns waste into renewable energy and
-                  soil nutrients—creating environmental, social, and economic
-                  benefits.
+                  Blancosy LTD is an eco-fintech company building the financial
+                  layer for the circular waste economy. Our technology digitizes
+                  waste at the point of collection, transforming recyclable
+                  materials into verified economic assets that can be tracked,
+                  rewarded, and financed. We deploy Reverse Vending Machines
+                  <strong>(RVMs)</strong> in high-end and high-footfall
+                  locations such as malls, estates, institutions, and commercial
+                  centers to collect plastics and other recyclables. Each
+                  deposit is automatically weighed, recorded, and verified,
+                  creating trusted data on material type, volume, and
+                  contributor.
                 </p>
               </div>
               <div className="text-xl space-y-4 text-muted-foreground">
                 <p>
-                  We produce eco-friendly products such as{" "}
-                  <strong>Eco-Makaa</strong>, sustainable charcoal briquettes
-                  made from recycled biomass, <strong>Eco-Jiko</strong>, a
-                  clean, efficient cookstove, and <strong>RVM</strong>, our
-                  state-of-the-art Reverse Vending Machines using advanced AI
-                  and bioengineering to process recyclables efficiently.
+                  This data is synced to the{" "}
+                  <strong>Blancosy mobile application</strong>, where
+                  users—waste collectors, aggregators, and community members—are
+                  instantly rewarded through incentives and direct payments
+                  credited to their <strong>digital wallet</strong>. The wallet
+                  enables users to receive payments, track earnings, access
+                  rewards, and qualify for embedded finance products such as
+                  working capital and equipment support.
                 </p>
                 <p>
-                  Our approach promotes a circular economy—empowering
-                  communities, generating jobs, and fostering sustainable
-                  practices with embedded fintech for financial inclusion.
+                  By linking physical waste flows with{" "}
+                  <strong>digital records</strong> and
+                  <strong> financial tools</strong>, Blancosy de-risks the
+                  informal waste sector, increases collection volumes, prevents
+                  waste from reaching landfills, and unlocks new income and
+                  financing opportunities for waste actors—while providing
+                  partners with transparent, measurable impact data.
                 </p>
               </div>
             </div>
