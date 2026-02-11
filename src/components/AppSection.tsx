@@ -76,7 +76,7 @@ const AppSection: React.FC = () => {
             <div className="mt-auto pt-6">
               <Button asChild size="lg" className="eco-button">
                 <a
-                  href="https://play.google.com/store"
+                  href="https://play.google.com/store/apps/details?id=com.blancosyltd.blancosy"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
