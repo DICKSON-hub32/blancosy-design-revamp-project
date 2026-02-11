@@ -265,3 +265,47 @@ All colors MUST be HSL.
 .animate-circular-scroll:hover {
   animation-play-state: paused;
 }
+
+/* Add these styles to your component's CSS module or global CSS */
+
+@keyframes seamless-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partnership-scroll {
+  display: flex;
+  width: max-content;
+  animation: seamless-scroll 30s linear infinite;
+}
+
+/* Create the seamless effect by duplicating content in CSS pseudo-elements */
+.partnership-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.partnership-container::before,
+.partnership-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.partnership-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--background), transparent);
+}
+
+.partnership-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--background), transparent);
+}

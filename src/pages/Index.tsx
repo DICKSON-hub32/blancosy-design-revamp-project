@@ -8,7 +8,6 @@ import AppSection from "@/components/AppSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import ImpactSection from "@/components/ImpactSection";
 import TestimonialSection from "@/components/TestimonialSection";
-import PartnersSection from "@/components/PartnersSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
