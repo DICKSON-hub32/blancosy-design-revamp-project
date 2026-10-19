@@ -1,15 +1,16 @@
 // src/components/ContactSection.tsx
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Mail, Phone, Send, CheckCircle, ArrowUpRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { sendContactMessage } from "@/lib/emailjs";
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     organization: "",
-    message: ""
+    message: "",
+    website: "" // spam trap, hidden from visitors
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
@@ -26,35 +27,18 @@ const ContactSection: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          access_key: "8d56e098-0539-42cb-942a-e0eeba62130f", // Get this from web3forms.com
-          name: formData.name,
-          email: formData.email,
-          organization: formData.organization,
-          message: formData.message,
-          to: "vivablancos2024@gmail.com"
-        })
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        toast({
-          title: "Message Sent!",
-          description:
-            "Thank you for your interest. We'll get back to you soon."
-        });
-        setFormData({ name: "", email: "", organization: "", message: "" });
-      } else {
-        throw new Error("Form submission failed");
+      // Bots fill the hidden field; pretend success without sending anything
+      if (!formData.website) {
+        await sendContactMessage(formData);
       }
+      toast({
+        title: "Message Sent!",
+        description:
+          "Thank you for your interest. We'll get back to you soon."
+      });
+      setFormData({ name: "", email: "", organization: "", message: "", website: "" });
     } catch (error) {
+      console.error(error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
@@ -78,251 +62,215 @@ const ContactSection: React.FC = () => {
       info: "+254758277793",
       action: "tel:+254758277793"
     }
-    // {
-    //   icon: MapPin,
-    //   title: "Visit Us",
-    //   info: "Ruaraka, Nairobi, Kenya",
-    //   action: "#"
-    // }
   ];
 
+  const partners = (
+    <>
+      <div className="flex h-24 min-w-[15rem] items-center justify-center bg-white px-8 ring-1 ring-ink/10">
+        <img src="/afosi.png" alt="AFOSI logo" className="max-h-12 w-auto object-contain" />
+      </div>
+      <div className="flex h-24 min-w-[15rem] items-center justify-center bg-white px-8 ring-1 ring-ink/10">
+        <img src="/kcic.png" alt="KCIC logo" className="max-h-12 w-auto object-contain" />
+      </div>
+      <div className="flex h-24 min-w-[17rem] items-center gap-3 bg-ink px-8 text-white">
+        <CheckCircle className="h-5 w-5 flex-shrink-0 text-leaf" />
+        <span className="font-semibold">Community groups and NGOs</span>
+      </div>
+      <div className="flex h-24 min-w-[17rem] items-center gap-3 bg-petrol px-8 text-white">
+        <CheckCircle className="h-5 w-5 flex-shrink-0 text-leaf" />
+        <span className="font-semibold">Educational institutions</span>
+      </div>
+    </>
+  );
+
   return (
-    <section id="contact" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="bg-background py-24 md:py-32">
+      <div className="wrap">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Get <span className="gradient-text">Involved</span>
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <h2 className="display display-xl rv lg:col-span-7">
+            Get <span className="hl">Involved</span>
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p
+            className="lede rv text-muted-foreground lg:col-span-5"
+            style={{ "--d": "120ms" } as React.CSSProperties}
+          >
             Ready to make a difference? Connect with us to learn how you can
             contribute to Kenya's sustainable future.
           </p>
         </div>
 
-        {/* Google Maps */}
-        <div className="mb-16 rounded-2xl overflow-hidden shadow-2xl">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.823393772252!2d36.841929674965755!3d-1.2795745987082554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTYnNDYuNSJTIDM2wrA1MCc0MC4yIkU!5e0!3m2!1sen!2ske!4v1770702674792!5m2!1sen!2ske"
-            width="100%"
-            height="400"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-          ></iframe>
-        </div>
-
-        {/* Equal-height columns container */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="mt-16 grid gap-16 md:mt-24 lg:grid-cols-12 lg:gap-12">
           {/* Left Column - Contact Form */}
-          <div className="flex flex-col flex-1">
-            <div className="space-y-8 flex-grow">
-              <div className="flex justify-center items-center">
-                <h3 className="text-2xl font-bold mb-4">
-                  Send us a <span className="gradient-text">Message</span>
-                </h3>
-              </div>
-              <div>
-                <p className="text-muted-foreground">
-                  Whether you're interested in our products, want to partner
-                  with us, or support our mission, we'd love to hear from you.
-                </p>
-              </div>
+          <div className="rv lg:col-span-7">
+            <div className="bg-white p-8 shadow-[0_30px_60px_-45px_rgba(12,36,39,0.6)] ring-1 ring-ink/10 md:p-12">
+              <h3 className="display display-md">
+                Send us a <span className="hl">Message</span>
+              </h3>
+              <p className="mt-5 max-w-xl text-muted-foreground">
+                Whether you're interested in our products, want to partner
+                with us, or support our mission, we'd love to hear from you.
+              </p>
 
-              <div className="space-y-6">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium mb-2"
-                      >
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-                        placeholder="Your full name"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium mb-2"
-                      >
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-                  </div>
-
+              <form onSubmit={handleSubmit} className="mt-10 space-y-8">
+                {/* Spam trap: hidden from people, filled in by bots */}
+                <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="grid gap-8 md:grid-cols-2">
                   <div>
-                    <label
-                      htmlFor="organization"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Organization (Optional)
+                    <label htmlFor="name" className="field-label">
+                      Full Name *
                     </label>
                     <input
                       type="text"
-                      id="organization"
-                      name="organization"
-                      value={formData.organization}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-                      placeholder="Your organization or company"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
+                      id="name"
+                      name="name"
+                      value={formData.name}
                       onChange={handleInputChange}
                       required
-                      rows={6}
-                      className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors resize-none"
-                      placeholder="Tell us about your interest in our services or how you'd like to get involved..."
+                      className="field"
+                      placeholder="Your full name"
                     />
                   </div>
+                  <div>
+                    <label htmlFor="email" className="field-label">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="field"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                </div>
 
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="eco-button w-full"
-                  >
-                    {isSubmitting ? (
-                      <div className="flex items-center gap-2">
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Sending...
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2">
-                        <Send className="h-2 w-4" />
-                        Send Message
-                      </div>
-                    )}
-                  </Button>
-                </form>
-              </div>
+                <div>
+                  <label htmlFor="organization" className="field-label">
+                    Organization (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    id="organization"
+                    name="organization"
+                    value={formData.organization}
+                    onChange={handleInputChange}
+                    className="field"
+                    placeholder="Your organization or company"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="field-label">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows={5}
+                    className="field resize-none"
+                    placeholder="Tell us about your interest in our services or how you'd like to get involved..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn btn-ink w-full sm:w-auto"
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                      Sending...
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-2">
+                      <Send />
+                      Send Message
+                    </span>
+                  )}
+                </button>
+              </form>
             </div>
           </div>
 
-          {/* Right Column - Contact Info & CTA */}
-          <div className="flex flex-col flex-1 space-y-28">
-            <div className="flex justify-center items-center">
-              <h3 className="text-2xl font-bold mb-6">
-                Contact <span className="gradient-text">Information</span>
-              </h3>
-            </div>
-            <div>
-              <div className="space-y-4">
-                {contactInfo.map((contact, index) => {
-                  const IconComponent = contact.icon;
-                  return (
-                    <a
-                      key={index}
-                      href={contact.action}
-                      className="eco-card flex items-center gap-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                    >
-                      <div className="p-3 bg-primary/10 rounded-lg">
-                        <IconComponent className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">{contact.title}</h4>
-                        <p className="text-muted-foreground">{contact.info}</p>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
+          {/* Right Column - Contact Info & Map */}
+          <div className="lg:col-span-5">
+            <h3 className="display display-md rv">
+              Contact <span className="hl">Information</span>
+            </h3>
+            <div className="mt-10 border-t border-ink/15">
+              {contactInfo.map((contact, index) => {
+                const IconComponent = contact.icon;
+                return (
+                  <a
+                    key={contact.title}
+                    href={contact.action}
+                    className="rv group flex items-center gap-5 border-b border-ink/15 py-6"
+                    style={{ "--d": `${index * 90}ms` } as React.CSSProperties}
+                  >
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-ink text-white transition-colors duration-300 group-hover:bg-ember group-hover:text-ink">
+                      <IconComponent className="h-5 w-5" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <h4 className="label text-ink/60">{contact.title}</h4>
+                      <p className="mt-1 truncate text-xl font-bold text-ink md:text-2xl">
+                        {contact.info}
+                      </p>
+                    </div>
+                    <ArrowUpRight className="h-6 w-6 shrink-0 text-ink/40 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-ink" />
+                  </a>
+                );
+              })}
             </div>
 
-            {/* Partnership Opportunities */}
-
-            {/* Mission Statement */}
-            {/* <div className="eco-card bg-gradient-to-br from-accent/5 to-eco-blue/5 border-accent/20">
-              <h4 className="text-xl font-semibold mb-3">Why Work With Us?</h4>
-              <p className="text-muted-foreground">
-                Join a movement that's not just about business, but about
-                creating lasting positive change for Kenya's environment and
-                communities. Together, we can build a sustainable future that
-                benefits everyone.
-              </p>
-            </div> */}
+            {/* Google Maps */}
+            <div className="rv-img mt-10 overflow-hidden ring-1 ring-ink/10">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.823393772252!2d36.841929674965755!3d-1.2795745987082554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTYnNDYuNSJTIDM2wrA1MCc0MC4yIkU!5e0!3m2!1sen!2ske!4v1770702674792!5m2!1sen!2ske"
+                width="100%"
+                height="360"
+                style={{ border: 0 }}
+                className="block grayscale-[0.85] contrast-[1.05] transition-[filter] duration-500 hover:grayscale-0"
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+            </div>
           </div>
         </div>
+
         {/* Partnership Carousel - Below both columns */}
-        {/* Partnership Carousel - Below both columns */}
-        <div className="mt-16 overflow-hidden">
-          <h4 className="text-2xl font-bold text-center mb-8">
-            Partnership <span className="gradient-text">Opportunities</span>
+        <div className="mt-24 md:mt-32">
+          <h4 className="display display-sm rv">
+            Partnership <span className="hl">Opportunities</span>
           </h4>
-
-          <div className="relative">
-            {/* Gradient overlays for fade effect */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
-
-            <div className="overflow-hidden">
-              <div className="flex gap-8 animate-circular-scroll">
-                {/* Repeat the set multiple times for seamless infinite scroll */}
-                {[...Array(6)].map((_, setIndex) => (
-                  <React.Fragment key={setIndex}>
-                    <div className="flex-shrink-0 eco-card bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 min-w-[280px] h-24 px-6 flex items-center justify-center">
-                      <img
-                        src="./afosi.png"
-                        alt="AFOSI logo"
-                        className="max-h-12 w-auto object-contain"
-                      />
-                    </div>
-                    <div className="flex-shrink-0 eco-card bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 min-w-[280px] h-24 px-6 flex items-center justify-center">
-                      <img
-                        src="./kcic.png"
-                        alt="KCIC logo"
-                        className="max-h-12 items-center w-auto object-contain"
-                      />
-                    </div>
-                    <div className="flex-shrink-0 eco-card bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 min-w-[280px] px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                        <span className="font-medium">
-                          Community groups and NGOs
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex-shrink-0 eco-card bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 min-w-[280px] px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                        <span className="font-medium">
-                          Educational institutions
-                        </span>
-                      </div>
-                    </div>
-                  </React.Fragment>
-                ))}
-              </div>
+          <div
+            className="marquee mt-10"
+            style={{ "--marquee-dur": "45s" } as React.CSSProperties}
+          >
+            <div className="marquee-track">
+              {[0, 1].map((copy) => (
+                <div key={copy} className="flex shrink-0 gap-4 pr-4" aria-hidden={copy === 1}>
+                  {partners}
+                  {partners}
+                  {partners}
+                </div>
+              ))}
             </div>
           </div>
         </div>

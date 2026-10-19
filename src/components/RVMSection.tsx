@@ -1,8 +1,6 @@
 // src/components/RVMSection.tsx
 import React from "react";
-import { Brain, Zap, Leaf, DollarSign, ArrowRight, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Brain, DollarSign } from "lucide-react";
 import rvmImage from "@/assets/rvm.jpg";
 
 const RVMSection: React.FC = () => {
@@ -22,61 +20,62 @@ const RVMSection: React.FC = () => {
   ];
 
   return (
-    <section id="rvm" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Title – centered at the top, spans full width */}
-          <div className="lg:col-span-2 text-center mb-10 md:mb-12">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
-              Reverse Vending <span className="gradient-text">Machine</span>
-            </h2>
-          </div>
+    <section id="rvm" className="overflow-hidden bg-white py-24 md:py-36">
+      <div className="wrap">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <h2 className="display display-xl rv lg:col-span-7">
+            Reverse Vending <span className="hl">Machine</span>
+          </h2>
+          <p
+            className="lede rv text-ink lg:col-span-5"
+            style={{ "--d": "120ms" } as React.CSSProperties}
+          >
+            Sort waste and reward collectors with a redeemable point via our
+            app which is intergrated in the RVM.
+          </p>
+        </div>
 
-          {/* Left Column - Image */}
-          <div className="relative flex flex-col">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl flex-1 min-h-[500px] lg:min-h-0">
+        <div className="mt-16 grid gap-14 md:mt-24 lg:grid-cols-12 lg:items-center lg:gap-10">
+          {/* Image, mounted on an offset colour block */}
+          <figure className="relative mx-auto w-full max-w-[34rem] lg:col-span-6 lg:mx-0">
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-5 -right-5 h-full w-full bg-leaf md:-bottom-8 md:-right-8"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute -left-6 -top-6 h-24 w-24 rounded-full border-[10px] border-ember md:-left-10 md:-top-10 md:h-32 md:w-32"
+            />
+            <div className="rv-img relative overflow-hidden bg-ink shadow-[0_40px_60px_-30px_rgba(12,36,39,0.55)]">
               <img
                 src={rvmImage}
                 alt="Reverse Vending Machine"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                loading="lazy"
+                className="aspect-[511/423] w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-primary/10 to-transparent" />
             </div>
-          </div>
+          </figure>
 
-          {/* Right Column - Content */}
-          <div className="flex flex-col space-y-8">
-            <div className="space-y-6">
-              <p className="text-xl leading-relaxed text-muted-foreground">
-                Sort waste and reward collectors with a redeemable point via our
-                app which is intergrated in the RVM.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 flex-grow">
+          {/* Content */}
+          <div className="lg:col-span-5 lg:col-start-8">
+            <div className="border-t border-ink/15">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-xl flex-shrink-0">
-                    <feature.icon className="h-6 w-6 text-primary" />
-                  </div>
+                <div
+                  key={feature.title}
+                  className="rv flex gap-5 border-b border-ink/15 py-7"
+                  style={{ "--d": `${(index + 1) * 100}ms` } as React.CSSProperties}
+                >
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-petrol text-white">
+                    <feature.icon className="h-5 w-5" />
+                  </span>
                   <div>
-                    <h4 className="font-semibold mb-2 text-lg">
-                      {feature.title}
-                    </h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <h4 className="display display-sm">{feature.title}</h4>
+                    <p className="mt-2 leading-relaxed text-muted-foreground">
                       {feature.description}
                     </p>
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div className="mt-auto pt-6">
-              {/* <Button asChild size="lg" className="eco-button">
-                <Link to="/contact">
-                  Contact Support <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button> */}
             </div>
           </div>
         </div>

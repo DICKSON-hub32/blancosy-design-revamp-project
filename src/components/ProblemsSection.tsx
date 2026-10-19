@@ -1,17 +1,15 @@
-// src/components/ProblemsSection.tsx (Updated with challenges from Slides 3 and 9)
+// src/components/ProblemsSection.tsx
 import React from "react";
 import {
   Users,
   Recycle,
   Leaf,
   Trash,
-  Utensils,
   Link,
   Venus,
   Banknote,
   Zap,
-  Flame,
-  Award
+  Flame
 } from "lucide-react";
 
 const ProblemsSection: React.FC = () => {
@@ -66,30 +64,37 @@ const ProblemsSection: React.FC = () => {
   ];
 
   return (
-    <section id="problems" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Challenges We <span className="gradient-text">Address</span>
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            What if waste activities could be properly recorded, rewarded and
-            financed?
-          </p>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section
+      id="problems"
+      className="grain relative overflow-hidden bg-ink py-24 text-white md:py-36"
+    >
+      {/* Soft light from the top right */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 -top-40 -z-10 h-[38rem] w-[38rem] rounded-full bg-petrol/60 blur-[120px]"
+      />
+      <div className="wrap">
+        <h2 className="display display-lg rv">
+          Challenges We <span className="hl">Address</span>
+        </h2>
+        <p
+          className="statement rv mt-10 max-w-5xl text-white/90 md:mt-14"
+          style={{ "--d": "120ms" } as React.CSSProperties}
+        >
+          What if waste activities could be properly recorded, rewarded and
+          financed?
+        </p>
+
+        <div className="mt-16 grid border-l border-t border-white/15 sm:grid-cols-2 md:mt-24 lg:grid-cols-3">
           {problems.map((problem, index) => (
             <div
-              key={index}
-              className="eco-card p-6 bg-white/50 border-primary/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
+              key={problem.title}
+              className="rv group relative border-b border-r border-white/15 p-8 transition-colors duration-500 hover:bg-white/[0.04] md:p-10"
+              style={{ "--d": `${(index % 3) * 90}ms` } as React.CSSProperties}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-primary/10 rounded-lg">
-                  <problem.icon className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold">{problem.title}</h3>
-              </div>
-              <p className="text-muted-foreground">{problem.description}</p>
+              <problem.icon className="h-7 w-7 text-leaf transition-transform duration-500 group-hover:-translate-y-1" />
+              <h3 className="display display-sm mt-10 md:mt-14">{problem.title}</h3>
+              <p className="mt-4 text-white/65">{problem.description}</p>
             </div>
           ))}
         </div>

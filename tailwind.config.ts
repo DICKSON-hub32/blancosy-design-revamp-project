@@ -18,7 +18,28 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Figtree', 'Segoe UI', 'system-ui', '-apple-system', 'sans-serif'],
+				display: ['"Bricolage Grotesque"', 'Impact', '"Arial Narrow"', 'system-ui', 'sans-serif'],
+				mono: ['"IBM Plex Mono"', 'ui-monospace', 'SFMono-Regular', 'Consolas', 'monospace']
+			},
 			colors: {
+				// Brand palette, taken from the logo
+				ink: '#0C2427',
+				deep: '#062A2D',
+				petrol: '#0B5C63',
+				leaf: { DEFAULT: '#6CC24A', ink: '#2F7520' },
+				ember: { DEFAULT: '#F28C1B', ink: '#A04F00' },
+				bone: '#F4F5F1',
+				char: '#1C1915',
+				// Recycling streams
+				material: {
+					plastics: '#4FA3DB',
+					papers: '#C49A63',
+					cartons: '#8FD46E',
+					metals: '#A9B5BA',
+					cans: '#F28C1B'
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

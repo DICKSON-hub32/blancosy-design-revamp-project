@@ -1,12 +1,12 @@
-// src/components/PortfolioSection.tsx (Updated with achievements from Slides 10-11)
+// src/components/PortfolioSection.tsx
 import React from "react";
-import { Recycle, Handshake, Users, Box, Banknote, Globe } from "lucide-react";
+import { Recycle, Users, Globe } from "lucide-react";
 
 const PortfolioSection: React.FC = () => {
   const portfolioItems = [
     {
       icon: Recycle,
-      title: "5,000+ Tons Recycled",
+      title: "Waste Recycled",
       description: "Plastic, paper, and metal waste diverted from landfills.",
       type: "Accomplishment",
       since: "Yearly",
@@ -14,7 +14,7 @@ const PortfolioSection: React.FC = () => {
     },
     {
       icon: Users,
-      title: "24 Jobs Created",
+      title: "Green Jobs Created",
       description: "Empowering youth and women through sustainable employment.",
       type: "Impact",
       year: "Ongoing",
@@ -22,7 +22,7 @@ const PortfolioSection: React.FC = () => {
     },
     {
       icon: Globe,
-      title: "216 Active Clients",
+      title: "Growing Client Base",
       description:
         "Serving communities, businesses, and organizations across Kenya.",
       type: "Traction",
@@ -31,50 +31,59 @@ const PortfolioSection: React.FC = () => {
   ];
 
   return (
-    <section id="portfolio" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Our <span className="gradient-text">Achievements</span>
+    <section id="portfolio" className="bg-background py-24 md:py-32">
+      <div className="wrap">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <h2 className="display display-lg rv lg:col-span-7">
+            Our <span className="hl">Achievements</span>
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p
+            className="lede rv text-muted-foreground lg:col-span-5"
+            style={{ "--d": "120ms" } as React.CSSProperties}
+          >
             Discover the milestones that define our journey toward a sustainable
             Kenya.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div className="mt-14 grid gap-px overflow-hidden rounded-[3px] border border-ink/15 bg-ink/15 md:mt-20 md:grid-cols-3">
           {portfolioItems.map((item, index) => (
             <div
-              key={index}
-              className="eco-card p-6 bg-white/50 border-primary/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
+              key={item.title}
+              className="rv group flex flex-col bg-white p-8 transition-colors duration-500 hover:bg-bone md:p-10"
+              style={{ "--d": `${index * 100}ms` } as React.CSSProperties}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-primary/10 rounded-lg">
-                  <item.icon className="h-6 w-6 text-primary" />
+              <span className="grid h-14 w-14 place-items-center rounded-full bg-leaf/15 text-leaf-ink transition-transform duration-500 group-hover:-rotate-12">
+                <item.icon className="h-7 w-7" />
+              </span>
+              <h3 className="display display-md mt-10">{item.title}</h3>
+              <p className="mt-4 flex-1 text-lg leading-relaxed text-muted-foreground">
+                {item.description}
+              </p>
+              <dl className="mt-10 border-t border-ink/15 text-sm">
+                <div className="flex items-baseline justify-between gap-4 border-b border-ink/10 py-3">
+                  <dt className="label text-ink/60">Type:</dt>
+                  <dd className="font-semibold">{item.type}</dd>
                 </div>
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">{item.description}</p>
-              <div className="text-sm text-muted-foreground">
-                <p>
-                  <strong>Type:</strong> {item.type}
-                </p>
                 {item.since && (
-                  <p>
-                    <strong>Since:</strong> {item.since}
-                  </p>
+                  <div className="flex items-baseline justify-between gap-4 border-b border-ink/10 py-3">
+                    <dt className="label text-ink/60">Since:</dt>
+                    <dd className="font-semibold">{item.since}</dd>
+                  </div>
                 )}
                 {item.year && (
-                  <p>
-                    <strong>Year:</strong> {item.year}
-                  </p>
+                  <div className="flex items-baseline justify-between gap-4 border-b border-ink/10 py-3">
+                    <dt className="label text-ink/60">Year:</dt>
+                    <dd className="font-semibold">{item.year}</dd>
+                  </div>
                 )}
                 {item.impact && (
-                  <p>
-                    <strong>Impact:</strong> {item.impact}
-                  </p>
+                  <div className="flex items-baseline justify-between gap-4 border-b border-ink/10 py-3">
+                    <dt className="label text-ink/60">Impact:</dt>
+                    <dd className="font-semibold">{item.impact}</dd>
+                  </div>
                 )}
-              </div>
+              </dl>
             </div>
           ))}
         </div>

@@ -1,9 +1,7 @@
 // src/components/AppSection.tsx
 import React from "react";
 import { Target, MapPin, BarChart, Users, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import appImage from "@/assets/app-screenshot.png";
+import appImage from "@/assets/app-phone.png";
 
 const AppSection: React.FC = () => {
   const features = [
@@ -34,69 +32,72 @@ const AppSection: React.FC = () => {
   ];
 
   return (
-    <section id="app" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Title – centered at the top, spans full width */}
-          <div className="lg:col-span-2 text-center mb-10 md:mb-12">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
-              Smart Recycling <span className="gradient-text">App</span>
-            </h2>
+    <section
+      id="app"
+      className="grain relative overflow-hidden bg-petrol py-24 text-white md:py-36"
+    >
+      {/* Light behind the phone */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[-10%] top-1/2 -z-10 h-[44rem] w-[44rem] -translate-y-1/2 rounded-full bg-leaf/30 blur-[140px]"
+      />
+      <div className="wrap grid gap-16 lg:grid-cols-12 lg:items-center lg:gap-10">
+        {/* Content */}
+        <div className="lg:col-span-7">
+          <h2 className="display display-lg rv">
+            Smart Recycling <span className="hl">App</span>
+          </h2>
+          <p
+            className="lede rv mt-8 max-w-2xl text-white/80"
+            style={{ "--d": "100ms" } as React.CSSProperties}
+          >
+            Our innovative mobile application connects users with the circular
+            economy, making recycling rewarding and accessible. Track your
+            environmental impact, earn rewards for sustainable actions, and join
+            a community of eco-conscious individuals.
+          </p>
+
+          <div className="mt-12 grid gap-px overflow-hidden rounded-[3px] bg-white/15 sm:grid-cols-2">
+            {features.map((feature, index) => (
+              <div
+                key={feature.title}
+                className="rv bg-petrol p-6 md:p-7"
+                style={{ "--d": `${index * 80}ms` } as React.CSSProperties}
+              >
+                <feature.icon className="h-6 w-6 text-leaf" />
+                <h4 className="mt-5 text-lg font-bold">{feature.title}</h4>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
           </div>
 
-          {/* Left Column - Content */}
-          <div className="flex flex-col space-y-8">
-            <div className="space-y-6">
-              <p className="text-xl leading-relaxed text-muted-foreground">
-                Our innovative mobile application connects users with the
-                circular economy, making recycling rewarding and accessible.
-                Track your environmental impact, earn rewards for sustainable
-                actions, and join a community of eco-conscious individuals.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 flex-grow">
-              {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-xl flex-shrink-0">
-                    <feature.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2 text-lg">
-                      {feature.title}
-                    </h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-auto pt-6">
-              <Button asChild size="lg" className="eco-button">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.blancosyltd.blancosy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Get it on Google Play <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
-            </div>
+          <div className="mt-10">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.blancosyltd.blancosy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ember"
+            >
+              Get it on Google Play <ArrowRight />
+            </a>
           </div>
+        </div>
 
-          {/* Right Column - Image */}
-          <div className="relative flex flex-col">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl flex-1 min-h-[500px] lg:min-h-0">
-              <img
-                src={appImage}
-                alt="Smart Recycling App Screenshot"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-primary/10 to-transparent" />
-            </div>
-          </div>
+        {/* Phone */}
+        <div className="relative mx-auto w-full max-w-[22rem] lg:col-span-5">
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-[8%] bottom-[-4%] h-12 rounded-[50%] bg-black/40 blur-2xl"
+          />
+          <img
+            src={appImage}
+            alt="Smart Recycling App Screenshot"
+            loading="lazy"
+            className="drift relative w-full rotate-[4deg] drop-shadow-[0_40px_50px_rgba(0,0,0,0.45)]"
+            style={{ "--rot": "4deg", "--drift": "6%" } as React.CSSProperties}
+          />
         </div>
       </div>
     </section>
